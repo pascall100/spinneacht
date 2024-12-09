@@ -1,0 +1,137 @@
+/* Hintergrund schwarz, keine Scrollbalken */
+body, html {
+
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+}
+
+/* Container für die Animation */
+#background {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url('spider.jpg') no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* Wolken */
+.cloud {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    animation: float 10s linear infinite;
+}
+
+#cloud1 {
+    top: 10%;
+    left: -20%;
+    animation-duration: 12s;
+}
+
+#cloud2 {
+    top: 30%;
+    left: -30%;
+    animation-duration: 14s;
+}
+
+#cloud3 {
+    top: 50%;
+    left: -25%;
+    animation-duration: 10s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(120vw);
+    }
+}
+
+/* Button-Styling */
+#controls {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+/* Sprechblase */
+#speechBubble {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    font-size: 80px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#jumpscare {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: url('jumpscare.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 1000;
+}
+
+/* Animation für das Drehen */
+@keyframes spinAndMove {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(20px, 20px) rotate(180deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+#background.spin {
+    animation: spinAndMove 4s linear infinite;
+    animation-play-state: running; /* Standardmäßig läuft die Animation */
+}
+
+#background.spin.paused {
+    animation-play-state: paused; /* Animation anhalten */
+}
